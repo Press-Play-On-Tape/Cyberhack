@@ -12,7 +12,8 @@ void credits_Init() {
 void credits() {
 
     Sprites::drawOverwrite(5, 12, Images::Title_02, 0);
-
+    flickering(12);
+    
     if (arduboy.isFrameCount(4)) tvSequenceVars.counter++;
     if (tvSequenceVars.counter >= 200) tvSequenceVars.counter = 0;
 

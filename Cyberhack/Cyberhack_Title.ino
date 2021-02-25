@@ -18,54 +18,9 @@ void title() {
     Sprites::drawOverwrite(0, 0, Images::Title_00, 0);
     Sprites::drawOverwrite(73, 13, Images::Title_01, 0);
     Sprites::drawOverwrite(51, 46, Images::Title_01, 0);
-
-    uint8_t frameCount = arduboy.getFrameCount(192);
-
     Sprites::drawOverwrite(5, 17, Images::Title_02, 0);
-    
-    #ifdef FLICKERING
-        switch (frameCount) {
 
-            case 0:
-            case 1:
-            case 5:
-            case 7:
-            case 16:
-            case 61:
-                arduboy.fillRect(0, 17, WIDTH, 24, BLACK);
-                break;
-
-            case 64 ... 65:            
-                arduboy.fillRect(0, 17, WIDTH, 3, BLACK);
-                break;
-
-            case 66:
-            case 75:
-                arduboy.fillRect(0, 33, WIDTH, 5, BLACK);
-                break;
-
-            case 69 ... 70:       
-                arduboy.fillRect(0, 22, WIDTH, 8, BLACK);
-                break;
-
-            case 132:       
-            case 136:       
-                arduboy.drawFastHLine(0, 24, 40, BLACK);
-                arduboy.drawFastHLine(30, 34, 50, BLACK);
-                arduboy.drawFastHLine(60, 42, 50, BLACK);
-                break;
-
-            case 134:       
-                arduboy.drawFastHLine(60, 24, 40, BLACK);
-                arduboy.drawFastHLine(30, 34, 50, BLACK);
-                arduboy.drawFastHLine(0, 42, 50, BLACK);
-                break;
-
-            default:
-                break;
-                
-        }
-    #endif
+    flickering(17);
 
     arduboy.fillRect(20, 4, WIDTH, 4, WHITE);
     arduboy.drawFastHLine(0, 13, 73);
