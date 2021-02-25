@@ -157,6 +157,16 @@ void renderSelection() {
 
 }
 
+void printTime(uint8_t minutes, uint8_t seconds)
+{
+    if (minutes < 10) font3x5.print("0");
+    font3x5.print(minutes);
+
+    font3x5.print(".");
+
+    if (seconds < 10) font3x5.print("0");
+    font3x5.print(seconds);
+}
 
 void renderObjectives() { 
     
@@ -188,11 +198,7 @@ void renderObjectives() {
 
     if (hackGameVars.timer > 0 && (hackGameVars.timer > 5 || arduboy.getFrameCountHalf(15))) {
 
-        if (hackGameVars.timer / 60 < 10) font3x5.print("0");
-        font3x5.print(hackGameVars.timer / 60);
-        font3x5.print(".");
-        if (hackGameVars.timer % 60 < 10) font3x5.print("0");
-        font3x5.print(hackGameVars.timer % 60);
+        printTime(hackGameVars.timer / 60, hackGameVars.timer % 60);
 
         #ifdef USE_LED_ANALOGUE
         arduboy.setRGBled(BLUE_LED, 0);
