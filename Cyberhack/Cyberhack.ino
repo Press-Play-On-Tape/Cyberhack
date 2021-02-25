@@ -51,15 +51,15 @@ void byteBeatStep()
     switch (byteBeatIdx) {
 
         case ByteBeatIndex::Hack:
-            OCR4A = ((t*(t>>8|t>>18)&33&t>>3))^(t&t>>8|t>>20);
+            OCR4A = ((t*((t>>8)|(t>>18))&33&t>>3))^((t&t>>8)|(t>>20));
             break;
 
         case ByteBeatIndex::Map:
-            OCR4A = (((t>>7)|(t&t)>1)|(t&t>>8)|(t>>7))|(t+(t>>8))|((t>>7));
+            OCR4A = (((t>>7)|((t&t)>1))|(t&t>>8)|(t>>7))|(t+(t>>8))|((t>>7));
             break;
 
         case ByteBeatIndex::Street:
-            OCR4A = t>>6^t&0x25|t+(t^t>>11)-t* ((t%24?2:6)&t>>11)^t<<1&(t&0x256?t>>4:t>>10);
+            OCR4A = ((t>>6)^(t&0x25))|((t+(t^(t>>11))-t* ((t%24?2:6)&t>>11))^(t<<1&(t&0x256?t>>4:t>>10)));
             break;
             
     }
