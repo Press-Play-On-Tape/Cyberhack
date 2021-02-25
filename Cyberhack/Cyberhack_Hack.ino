@@ -416,10 +416,12 @@ void hackGame_HackScore() {
                 gameState = GameState::TV_Init;
             #endif
 
+            Message message = Message::Hack_Success;
+
             switch (idx) {
 
                 case Constants::Hack_Game_Over:
-                    mapGameVars.setMessage(Message::Game_Over_Success);
+                    message = Message::Game_Over_Success;
                     #ifdef TV_TRANSITION
                         nextState = GameState::Message_Game_Over_Success_Init;
                     #else
@@ -428,27 +430,18 @@ void hackGame_HackScore() {
                     break;
 
                 case Constants::Hack_None_Available:
-
-                    if (player.canPurchaseADeck()) {
-                        mapGameVars.setMessage(Message::Hack_Success);
-                        #ifdef TV_TRANSITION
-                            nextState = GameState::Message_Hacks_Achieved_Init;
-                        #else
-                            gameState = GameState::Message_Hacks_Achieved_Init;
-                        #endif
-                    }
-                    else {
-                        mapGameVars.setMessage(Message::Hacks_Game_Over);
-                        #ifdef TV_TRANSITION
-                            nextState = GameState::Message_Hacks_Game_Over;
-                        #else
-                            gameState = GameState::Message_Hacks_Game_Over;
-                        #endif
-                    }
+                {
+                    const bool playerCanPurchaseDeck = player.canPurchaseADeck();
+                    message = playerCanPurchaseDeck ? Message::Hack_Success : Message::Hacks_Game_Over;
+                    #ifdef TV_TRANSITION
+                        nextState = playerCanPurchaseDeck ? GameState::Message_Hacks_Achieved_Init : GameState::Message_Hacks_Game_Over;
+                    #else
+                        gameState = playerCanPurchaseDeck ? GameState::Message_Hacks_Achieved_Init : GameState::Message_Hacks_Game_Over;
+                    #endif
                     break;
+                }
 
                 default:
-                    mapGameVars.setMessage(Message::Hack_Success);
                     #ifdef TV_TRANSITION
                     nextState = GameState::Message_Hacks_Achieved_Init;
                     #else
@@ -457,6 +450,8 @@ void hackGame_HackScore() {
                     break;
 
             }
+
+            mapGameVars.setMessage(message);
 
         }
 
