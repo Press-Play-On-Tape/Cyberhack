@@ -157,6 +157,21 @@ void renderSelection() {
 
 }
 
+void printZero()
+{
+    font3x5.print("0");
+}
+
+void printTime(uint8_t minutes, uint8_t seconds)
+{
+    if (minutes < 10) printZero();
+    font3x5.print(minutes);
+
+    font3x5.print(".");
+
+    if (seconds < 10) printZero();
+    font3x5.print(seconds);
+}
 
 void renderObjectives() { 
     
@@ -188,11 +203,7 @@ void renderObjectives() {
 
     if (hackGameVars.timer > 0 && (hackGameVars.timer > 5 || arduboy.getFrameCountHalf(15))) {
 
-        if (hackGameVars.timer / 60 < 10) font3x5.print("0");
-        font3x5.print(hackGameVars.timer / 60);
-        font3x5.print(".");
-        if (hackGameVars.timer % 60 < 10) font3x5.print("0");
-        font3x5.print(hackGameVars.timer % 60);
+        printTime(hackGameVars.timer / 60, hackGameVars.timer % 60);
 
         #ifdef USE_LED_ANALOGUE
         arduboy.setRGBled(BLUE_LED, 0);
@@ -296,7 +307,7 @@ void renderObjectives() {
 
         font3x5.setCursor(108, 1);
         font3x5.print("ID:");
-        if (player.getHackIndex() < 10) font3x5.print("0");
+        if (player.getHackIndex() < 10) printZero();
         font3x5.print(player.getHackIndex());
     
     #else
@@ -306,7 +317,7 @@ void renderObjectives() {
 
         uint8_t target = hackGameVars.grid.getTarget();
         uint8_t togo = target > targetAchieved ? target - targetAchieved : 0;
-        if (togo < 10) font3x5.print("0");
+        if (togo < 10) printZero();
         font3x5.print(togo);
 
     #endif
@@ -398,7 +409,7 @@ uint8_t renderScoreObjectives() { // Returns number of active hacks available.
             Sprites::drawSelfMasked(DISP_SCORES_STATUS_LEFT - 1, DISP_SCORES_TOP + (j * DISP_SCORES_SPACING_Y), Images::Failed, 0);
 
             font3x5.setCursor(123, DISP_SCORES_TOP + (j * DISP_SCORES_SPACING_Y));
-            font3x5.print("0");
+            printZero();
             
         }
 

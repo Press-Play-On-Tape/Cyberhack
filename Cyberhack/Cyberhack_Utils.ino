@@ -129,7 +129,7 @@ void flickering(uint8_t y) {
             case 7:
             case 16:
             case 61:
-                arduboy.fillRect(0, yield, WIDTH, 24, BLACK);
+                arduboy.fillRect(0, y, WIDTH, 24, BLACK);
                 break;
 
             case 64 ... 65:            
@@ -142,7 +142,7 @@ void flickering(uint8_t y) {
                 break;
 
             case 69 ... 70:       
-                arduboy.fillRect(0, y = 5, WIDTH, 8, BLACK);
+                arduboy.fillRect(0, y + 5, WIDTH, 8, BLACK);
                 break;
 
             case 132:       
