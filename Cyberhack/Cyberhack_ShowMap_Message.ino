@@ -294,44 +294,55 @@ void showMap_Message() {
 
     }
 
-    {
-        uint8_t sentenceLength = pgm_read_byte(&sentences_Lengths[static_cast<uint8_t>(mapGameVars.getMessage())]);
-    
-        switch (mapGameVars.getMessage()) {
+    uint8_t sentenceLength = pgm_read_byte(&sentences_Lengths[static_cast<uint8_t>(mapGameVars.getMessage())]);
 
-            case Message::Face_Player_Start ... Message::Face_Player_End:
-                Sprites::drawOverwrite(0, 30, Images::Portrait_00, 0);
-                if (mapGameVars.counter < sentenceLength && arduboy.getFrameCountHalf(8)) {
+    switch (mapGameVars.getMessage()) {
 
-                    Sprites::drawOverwrite(11, 47, Images::Portrait_01, 0);
+        case Message::Face_Player_Start ... Message::Face_Player_End:
+            Sprites::drawOverwrite(0, 30, Images::Portrait_00, 0);
+            if (mapGameVars.counter < sentenceLength && arduboy.getFrameCountHalf(8)) {
 
-                }
-                break;
+                Sprites::drawOverwrite(11, 47, Images::Portrait_01, 0);
 
-            default:
-                Sprites::drawOverwrite(6, 32, Images::MapMenu_Face_00, 0);
-                arduboy.drawFastHLine(0, 63, 36);
-                if (mapGameVars.counter < sentenceLength && arduboy.getFrameCountHalf(8)) {
-
-                    Sprites::drawOverwrite(17, 49, Images::MapMenu_Face_01, 0);
-
-                }
-                break;
-
-        }
-
-
-        if (arduboy.isFrameCount(6)) {
-            if (sentenceLength > mapGameVars.counter) {
-                mapGameVars.counter++;
             }
+            break;
+
+        default:
+            Sprites::drawOverwrite(6, 32, Images::MapMenu_Face_00, 0);
+            arduboy.drawFastHLine(0, 63, 36);
+            if (mapGameVars.counter < sentenceLength && arduboy.getFrameCountHalf(8)) {
+
+                Sprites::drawOverwrite(17, 49, Images::MapMenu_Face_01, 0);
+
+            }
+            break;
+
+    }
+
+    if (arduboy.isFrameCount(6)) {
+        if (sentenceLength > mapGameVars.counter) {
+            mapGameVars.counter++;
         }
+    }
 
-        if (mapGameVars.getMessage() == Message::Game_Over_Success && sentenceLength == mapGameVars.counter) {
+    if (mapGameVars.getMessage() == Message::Game_Over_Success && sentenceLength == mapGameVars.counter) {
 
-            font3x5.setCursor(103, 54);
-            font3x5.print(player.getDollars());
-            font3x5.print("!");
+        font3x5.setCursor(103, 54);
+        font3x5.print(player.getDollars());
+        font3x5.print("!");
+
+    }
+
+    if (arduboy.justPressed(B_BUTTON)) {
+
+        if (mapGameVars.counter < sentenceLength) {
+    
+            mapGameVars.counter = sentenceLength;
+
+        }
+        else {
+
+            handleTransition();
 
         }
 
@@ -339,79 +350,90 @@ void showMap_Message() {
 
     if (arduboy.justPressed(A_BUTTON)) {
 
-        switch (gameState) {
+        handleTransition();
 
-            case GameState::Message_Intro:
+    }
 
-                switch (mapGameVars.getMessage()) {
+}
 
-                    case Message::Intro_1:
-                        mapGameVars.setMessage(Message::Intro_2);
-                        break;
+void handleTransition() {
 
-                    case Message::Intro_2:
-                        mapGameVars.setMessage(Message::Intro_3);
-                        break;
+    switch (gameState) {
 
-                    case Message::Intro_3:
-                        gotoMap();
-                        break;
+        case GameState::Message_Intro:
 
-                    default: break;
-                        
-                }
+            switch (mapGameVars.getMessage()) {
 
-                break;
+                case Message::Intro_1:
+                    mapGameVars.setMessage(Message::Intro_2);
+                    break;
 
-            case GameState::Message_Hack_Target_Not_Achieved:
+                case Message::Intro_2:
+                    mapGameVars.setMessage(Message::Intro_3);
+                    break;
 
-                if (player.getThreatLevel() == 100) {
-                    gameState = GameState::Message_Game_Over_Init;
-                    mapGameVars.setMessage(Message::Game_Over);
-                }
-                else {
+                case Message::Intro_3:
                     gotoMap();
-                }
-                break;
+                    break;
 
-            case GameState::Message_Hacks_Achieved:
-                gotoMap();
-                break;
+                default: break;
+                    
+            }
 
-            case GameState::Message_Move_To_Hacking:
+            break;
 
-                switch (mapGameVars.getMessage()) {
+        case GameState::Message_Hack_Target_Not_Achieved:
 
-                    case Message::Hack_None_Available:
-
-                        gotoMap();
-                        break;
-
-                    default:
-                        gameState = GameState::HackGame_Init;
-                        break;
-                
-                }
-                break;
-
-            case GameState::Message_Game_Over:
-            case GameState::Message_Game_Over_Success:
-                gameState = GameState::Credits_Init;
-                #ifdef BYTE_BEAT_SOUNDS    
-                    disableByteBeat();
-                #endif
-                break;
-
-            case GameState::Message_Hacks_Game_Over:
+            if (player.getThreatLevel() == 100) {
                 gameState = GameState::Message_Game_Over_Init;
                 mapGameVars.setMessage(Message::Game_Over);
-                break;
+            }
+            else {
+                gotoMap();
+            }
+            break;
 
-            default:
-                gameState = GameState::StealthGame_Init;
-                break;
+        case GameState::Message_Hacks_Achieved:
+            gotoMap();
+            break;
 
-        }
+        case GameState::Message_Move_To_Hacking:
+
+            switch (mapGameVars.getMessage()) {
+
+                case Message::Hack_None_Available:
+
+                    gotoMap();
+                    break;
+
+                default:
+                    gameState = GameState::HackGame_Init;
+                    break;
+            
+            }
+            break;
+
+        case GameState::Message_Game_Over:
+            #ifdef BYTE_BEAT_SOUNDS    
+                disableByteBeat();
+            #endif
+            break;
+
+        case GameState::Message_Game_Over_Success:
+            gameState = GameState::Credits_Init;
+            #ifdef BYTE_BEAT_SOUNDS    
+                disableByteBeat();
+            #endif
+            break;
+
+        case GameState::Message_Hacks_Game_Over:
+            gameState = GameState::Message_Game_Over_Init;
+            mapGameVars.setMessage(Message::Game_Over);
+            break;
+
+        default:
+            gameState = GameState::StealthGame_Init;
+            break;
 
     }
 

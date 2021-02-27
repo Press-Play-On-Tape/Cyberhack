@@ -3,5 +3,5 @@
     "output": "../build",
     "sketch": "Cyberhack/Cyberhack.ino",
     "port": "/dev/tty.usbmodem14601",
-    "configuration": "based_on=leonardo,boot=org,core=arduboy-core,display=sh1106,flashselect=rx"
+    "configuration": "based_on=leonardo,boot=org,core=arduboy-core,display=ssd1306,flashselect=rx"
 }
