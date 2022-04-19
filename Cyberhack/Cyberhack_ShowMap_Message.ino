@@ -11,9 +11,13 @@ constexpr char word_007[] PROGMEM = "DOWN";
 constexpr char word_008[] PROGMEM = "AT";
 constexpr char word_009[] PROGMEM = "ALL";
 constexpr char word_010[] PROGMEM = "COSTS!";
-constexpr char word_011[] PROGMEM = "DAMN,";
+#ifdef EXPLICIT_TEXT
+    constexpr char word_011[] PROGMEM = "DAMN,"; // E+
+#else
+    constexpr char word_011[] PROGMEM = "DARN,";
+#endif
 constexpr char word_012[] PROGMEM = "WASN'T";
-constexpr char word_013[] PROGMEM = "PERPARED";
+constexpr char word_013[] PROGMEM = "PREPARED";
 constexpr char word_014[] PROGMEM = "BREACH";
 constexpr char word_015[] PROGMEM = "THROUGH";
 constexpr char word_016[] PROGMEM = "THIS.";
@@ -31,7 +35,11 @@ constexpr char word_027[] PROGMEM = "WILL";
 constexpr char word_028[] PROGMEM = "WITH";
 constexpr char word_029[] PROGMEM = "YOUR";
 constexpr char word_030[] PROGMEM = "OWN";
-constexpr char word_031[] PROGMEM = "SHIT!";
+#ifdef EXPLICIT_TEXT
+    constexpr char word_031[] PROGMEM = "SHIT!"; // E+
+#else
+    constexpr char word_031[] PROGMEM = "DATA!";
+#endif
 constexpr char word_032[] PROGMEM = "NOW";
 constexpr char word_033[] PROGMEM = "TERRY,";
 constexpr char word_034[] PROGMEM = "MAKE";
@@ -47,7 +55,11 @@ constexpr char word_043[] PROGMEM = "THEIR";
 constexpr char word_044[] PROGMEM = "SYSTEMS";
 constexpr char word_045[] PROGMEM = "MORE";
 constexpr char word_046[] PROGMEM = "WHAT";
-constexpr char word_047[] PROGMEM = "HELL,";
+#ifdef EXPLICIT_TEXT
+    constexpr char word_047[] PROGMEM = "HELL,"; // E+
+#else
+    constexpr char word_047[] PROGMEM = "HECK,";
+#endif
 constexpr char word_048[] PROGMEM = "CAN'T";
 constexpr char word_049[] PROGMEM = "EVEN";
 constexpr char word_050[] PROGMEM = "GET";
@@ -69,7 +81,7 @@ constexpr char word_065[] PROGMEM = "DOWN.";
 constexpr char word_066[] PROGMEM = "HE";
 constexpr char word_067[] PROGMEM = "CAN";
 constexpr char word_068[] PROGMEM = "CLEAR";
-constexpr char word_069[] PROGMEM = "NAME..";
+constexpr char word_069[] PROGMEM = "NAME...";
 constexpr char word_070[] PROGMEM = "PRICE.";
 constexpr char word_071[] PROGMEM = "WHEN";
 constexpr char word_072[] PROGMEM = "PAYING";
@@ -84,7 +96,7 @@ constexpr char word_080[] PROGMEM = "CONTACT";
 constexpr char word_081[] PROGMEM = "HELP";
 constexpr char word_082[] PROGMEM = "ME";
 constexpr char word_083[] PROGMEM = "OUT.";
-constexpr char word_084[] PROGMEM = "LET'S";
+constexpr char word_084[] PROGMEM = ""; // Unused
 constexpr char word_085[] PROGMEM = "SHOPS.";
 constexpr char word_086[] PROGMEM = "SOME";
 constexpr char word_087[] PROGMEM = "UPGRADES.";
@@ -99,7 +111,11 @@ constexpr char word_095[] PROGMEM = "HACKING";
 constexpr char word_096[] PROGMEM = "MIGHT";
 constexpr char word_097[] PROGMEM = "THOSE";
 constexpr char word_098[] PROGMEM = "CORPO";
-constexpr char word_099[] PROGMEM = "BASTARDS";
+#ifdef EXPLICIT_TEXT
+    constexpr char word_099[] PROGMEM = "BASTARDS"; // E+
+#else
+    constexpr char word_099[] PROGMEM = "CROOKS";
+#endif
 constexpr char word_100[] PROGMEM = "PAY";
 constexpr char word_101[] PROGMEM = "THEY";
 constexpr char word_102[] PROGMEM = "HAVE";
@@ -206,28 +222,28 @@ constexpr uint8_t sentences_Lengths[] PROGMEM {
 };
 
 constexpr uint8_t sentence_data[] PROGMEM { 
-1, 2, 3, 4, 5, 0, 6, 7, 8, 9, 10,                                                       // 00 I need to take that corp down at all costs!
+1, 2, 3, 4, 5, 0, 6, 7, 8, 9, 10,                                                       // 00 I need to take that Corp down at all costs!
 32, 3, 34, 35, 36, 0, 37, 2, 3, 39, 0, 40, 41,                                          // 01 Now to make it home. Just need to avoid NCPDs lamest.
-2, 3, 34, 35, 36, 0, 42, 43, 44, 24, 0, 45, 26,                                         // 02 Need to make it home, hack their system for more intel.
-46, 25, 47, 48, 0, 49, 50, 51, 52, 53, 0, 54,                                           // 03 What the hell, can’t even get home without a fight!
-55, 56, 25, 06, 57, 0, 35, 58,                                                          // 04 Let’s hit the Corp where it hurts.
+2, 3, 34, 35, 36, 0, 42, 43, 44, 24, 0, 45, 26,                                         // 02 Need to make it home, hack their system for more intel!
+46, 25, 47, 48, 0, 49, 50, 51, 52, 53, 0, 54,                                           // 03 What the [hell]/[heck], can’t even get home without a fight!
+55, 56, 25, 06, 57, 0, 35, 58,                                                          // 04 Let's hit the Corp where it hurts.
 59, 60, 27, 1, 61, 0, 62 ,                                                              // 05 How much will I uncover today.
 1, 2, 45, 38, 3, 63, 0, 3, 4, 64, 65,                                                   // 06 I need more intel to sell to take them down.
 1, 2, 3, 50, 3, 33, 0, 66, 67, 68, 19, 69, 0, 24, 53, 70,                               // 07 I need to get to Terry, he can clear my name… for a price.
 71, 72, 25, 73, 0, 74, 1, 67, 75, 19, 0, 20, 76, 77,                                    // 08 When paying the right people I can lower my threat level here.
 78, 1, 27, 79, 5, 0, 80, 3, 81, 82, 83,                                                 // 09 Hope I will find that contact to help me out.
-84, 50, 3, 25, 85, 0, 1, 2, 86, 87,                                                     // 10 Let’s get to the shops. I need some upgrades.
+55, 50, 3, 25, 85, 0, 1, 2, 86, 87,                                                     // 10 Let's get to the shops. I need some upgrades.
 2, 87, 37, 2, 0, 3, 50, 88, 52, 0, 89, 90 ,                                             // 11 Need upgrades. Just need to get there without getting caught.
 91, 1, 92, 93, 94, 0, 95, 96, 81, 82, 0, 83,                                            // 12 If I am stuck, remote hacking might help me out.
-97, 98, 99, 0, 2, 3, 100, 24, 46, 0, 101, 102, 103,                                     // 13 Those CORPO bastards need to pay for what they have done. 
-104, 95, 43, 105, 0, 1, 67, 79, 38, 106, 0, 63, 35, 3, 108, 82, 3, 0, 42, 64, 109,      // 14 By hacking their servers I can find Intel and sell it to allow me to hack them further.
+97, 98, 99, 0, 2, 3, 100, 24, 46, 0, 101, 102, 103,                                     // 13 Those CORPO [bastards]/[crooks] need to pay for what they have done. 
+104, 95, 43, 105, 0, 1, 67, 79, 38, 106, 0, 63, 35, 3, 108, 82, 3, 0, 42, 64, 109,      // 14 By hacking their servers I can find intel and sell it to allow me to hack them further.
 110, 1, 102, 46, 1, 2, 1, 0, 67, 4, 64, 7, 24, 0, 107,                                  // 15 Once I have what I need I can take them down for good.
-11, 1, 12, 13, 0, 3, 14, 15, 16, 0, 17, 18, 19, 20, 21,                                 // 16 Damn, I wasn’t prepare to breach through this. Up goes my threat level…
-22, 23, 24, 25, 26, 0, 1, 27, 4, 23, 7, 0, 28, 29, 30, 31,                              // 17 Thank you for the intel! I will take you down with your own shit!
-9, 111, 102, 112, 0, 113, 3, 117, 0, 114, 115, 116, 0, 87,                              // All hacks have been completed. To continue purchase or swap upgrades.
-9, 111, 113, 0, 121, 23, 0, 118, 119, 120, 0, 87,                                       // All hacks completed. Unfortunately, You cannot afford any upgrades.
-121, 29, 0, 122, 123, 124, 125,                                                         // Unfortunately, your time here is over. 
-126, 0, 9, 111, 113, 0, 23, 127, 25, 6, 7, 0, 28, 53, 128, 129,                         // Congratulations! All Hacks completed. You took the Corp down with a balance of
+11, 1, 12, 13, 0, 3, 14, 15, 16, 0, 17, 18, 19, 20, 21,                                 // 16 [Damn]/[Darn], I wasn’t prepared to breach through this. Up goes my threat level…
+22, 23, 24, 25, 26, 0, 1, 27, 4, 23, 7, 0, 28, 29, 30, 31,                              // 17 Thank you for the intel! I will take you down with your own [shit]/[data]!
+9, 111, 102, 112, 0, 113, 3, 117, 0, 114, 115, 116, 0, 87,                              // 18 All hacks have been completed. To continue purchase or swap upgrades.
+9, 111, 113, 0, 121, 23, 0, 118, 119, 120, 0, 87,                                       // 19 All hacks completed. Unfortunately, You cannot afford any upgrades.
+121, 29, 0, 122, 123, 124, 125,                                                         // 20 Unfortunately, your time here is over. 
+126, 0, 9, 111, 113, 0, 23, 127, 25, 6, 7, 0, 28, 53, 128, 129,                         // 21 Congratulations! All Hacks completed. You took the Corp down with a balance of
 };
 
 
