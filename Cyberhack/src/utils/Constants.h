@@ -31,6 +31,7 @@
 #define _OLD_TOTALS
 #define _BYTE_BEAT_SOUNDS_1
 #define BYTE_BEAT_SOUNDS_3
+#define _EXPLICIT_TEXT
 
 #define NO_HACK_ID 255
 #define BUILDING_COUNT 14
@@ -235,7 +236,7 @@ enum class BuildingType : uint8_t {
     Max = HighBuilding,
 };
 
-enum ByteBeatIndex {
+enum ByteBeatIndex : uint8_t {
     Map = 0,
     Hack = 1,
     Street = 2
