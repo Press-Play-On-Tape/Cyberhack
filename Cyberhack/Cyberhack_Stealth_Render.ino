@@ -31,7 +31,7 @@ void renderPlayer() {
         case Movement::CrouchLeft:
         case Movement::CrouchRight:
             frame = (player.getMovement() == Movement::CrouchRight);
-            Sprites::drawExternalMask(player.getX(), 37, Images::Player_Crouch, Images::Player_Crouch_Mask, frame, frame);
+            Sprites::drawPlusMask(player.getX(), 37, Images::Player_Crouch, frame);
             frame = 255;
             break;
 
@@ -46,8 +46,8 @@ void renderPlayer() {
 
     if (frame < 255) {
 
-        Sprites::drawExternalMask(player.getX() + 1, y + (frame == 1 ? 1 : 0), Images::Player_Head, Images::Player_Head_Mask, headImage, headImage);
-        Sprites::drawExternalMask(player.getX(), y + 9, Images::Common, Images::Common_Mask, frame, frame);
+        Sprites::drawPlusMask(player.getX() + 1, y + (frame == 1 ? 1 : 0), Images::Player_Head, headImage);
+        Sprites::drawPlusMask(player.getX(), y + 9, Images::Common, frame);
 
     }
 
@@ -95,7 +95,7 @@ void renderGuard(Guard &guard) {
         case Movement::LookingUpLeft:
         case Movement::LookingUpRight:
             frame = (guard.getMovement() == Movement::LookingUpRight);
-            Sprites::drawExternalMask(xPosition, 36, Images::Guard_LookUp, Images::Guard_LookUp_Mask, frame, frame);
+            Sprites::drawPlusMask(xPosition, 36, Images::Guard_LookUp, frame);
             frame = 255;
             break;
 
@@ -104,13 +104,13 @@ void renderGuard(Guard &guard) {
     }
 
     if (frame < 255 && headImage < 255) {
-        Sprites::drawExternalMask(xPosition + 1, 36 + (frame == 1 ? 1 : 0), Images::Guard_Head, Images::Guard_Head_Mask, headImage, headImage);
-        Sprites::drawExternalMask(xPosition, 45, Images::Common, Images::Common_Mask, frame, frame);
+        Sprites::drawPlusMask(xPosition + 1, 36 + (frame == 1 ? 1 : 0), Images::Guard_Head, headImage);
+        Sprites::drawPlusMask(xPosition, 45, Images::Common, frame);
     }
 
     if (guard.getAlertCount() > 0) {
 
-        Sprites::drawExternalMask(xPosition + 5, 25, Images::Guard_Alert, Images::Guard_Alert_Mask, 0, 0);
+        Sprites::drawPlusMask(xPosition + 5, 25, Images::Guard_Alert, 0);
 
     }
 
@@ -132,7 +132,7 @@ void renderGuard(Guard &guard) {
         case Movement::LookingUpLeft:
         case Movement::LookingUpRight:
             if (guard.getSteps() > 64 || arduboy.getFrameCountHalf(32)) {
-                Sprites::drawExternalMask(xPosition + 4, 24, Images::Guard_Question, Images::Guard_Question_Mask, 0, 0);
+                Sprites::drawPlusMask(xPosition + 4, 24, Images::Guard_Question, 0);
             }                    
             break;
 
@@ -161,8 +161,8 @@ void renderForeground(const int16_t xOffset) {
 
         if (x > -BUILDING_LIGHTPOLE_WIDTH && x < WIDTH) {
 
-            Sprites::drawExternalMask(x, 12, Images::LightPole_Top, Images::LightPole_Top_Mask, 0, 0);
-            Sprites::drawExternalMask(x, 20, Images::LightPole_Base, Images::LightPole_Base_Mask, 0, 0);
+            Sprites::drawPlusMask(x, 12, Images::LightPole_Top, 0);
+            Sprites::drawOverwrite(x, 20, Images::LightPole_Base, 0);
 
             if (stealthGameVars.questionCount > 0) {
 
@@ -249,7 +249,7 @@ void renderTallBuilding(const int16_t x, const int8_t door) {
 
 void renderMedBuilding(const int16_t x, const int8_t door) {
 
-    Sprites::drawExternalMask(x, 18, Images::Building_Med, Images::Building_Med_Mask, 0, 0);
+    Sprites::drawPlusMask(x, 18, Images::Building_Med, 0);
     Sprites::drawOverwrite(x + 6, 33, Images::Building_Door, door);
 
 }

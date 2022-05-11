@@ -633,7 +633,7 @@ void stealthGame() {
     if (player.getShowReticle() && arduboy.getFrameCountHalf(16)) {
 
         ReticleTarget &reticleTarget = stealthGameVars.getReticleTarget(stealthGameVars.reticleTargetIdx);
-        Sprites::drawExternalMask(reticleTarget.x, reticleTarget.y, Images::Reticle, Images::Reticle_Mask, 0, 0);
+        Sprites::drawPlusMask(reticleTarget.x, reticleTarget.y, Images::Reticle, 0);
 
     }
 

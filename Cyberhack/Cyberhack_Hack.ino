@@ -351,7 +351,7 @@ void hackGame_HackOver() {
     renderObjectives();
     renderSelection();
 
-    Sprites::drawExternalMask(36, 23, Images::Dialogue, Images::Dialogue_Mask, 0, 0);
+    Sprites::drawPlusMask(36, 23, Images::Dialogue, 0);
     font3x5.setCursor(40, 26);
 
     switch (gameState) {
@@ -369,7 +369,7 @@ void hackGame_HackOver() {
             break;
 
         case GameState::HackOver_AllHacksPlayed:
-            Sprites::drawExternalMask(25, 23, Images::Dialogue_Large, Images::Dialogue_Large_Mask, 0, 0);
+            Sprites::drawPlusMask(25, 23, Images::Dialogue_Large, 0);
             break;
 
         default: break;
