@@ -628,7 +628,7 @@ void stealthGame() {
     renderTerminals();
 
 
-    // If the reticle is being diplayed ..
+    // If the reticle is being displayed ..
 
     if (player.getShowReticle() && arduboy.getFrameCountHalf(16)) {
 

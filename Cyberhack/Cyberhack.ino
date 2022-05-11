@@ -106,36 +106,26 @@ void loop() {
     switch (gameState) {
 
         case GameState::Splash_Init:
-
             splashScreen_Init();
-            splashScreen();
-            break;
+            /*-fallthrough*/
 
         case GameState::Splash:
-
             splashScreen();
-            // arduboy.display();
             break;
 
         case GameState::Title_Init:
-
             title_Init();
-            title();
-            break;
+            /*-fallthrough*/
 
         case GameState::Title:
-
             title();
             break;
 
         case GameState::HackGame_Init:
-
             hackGame_Init();
-            hackGame();
-            break;
+            /*-fallthrough*/
 
         case GameState::HackGame:
-
             hackGame();
             break;
 
@@ -143,76 +133,60 @@ void loop() {
         case GameState::HackOver_BufferFull:
         case GameState::HackOver_CannotMove:
         case GameState::HackOver_AllHacksPlayed:
-
             hackGame_HackOver();
             break;
 
         case GameState::HackScore:
-
             hackGame_HackScore();
             break;
 
         case GameState::ShowMap_Init:
-
             showMap_Init();
-            showMap();
-            break;
+            /*-fallthrough*/
 
         case GameState::ShowMap:
-
             showMap();
             break;
 
         case GameState::Messages_Start_Init ... GameState::Messages_End_Init:
-
             showMap_Message_Init();
             break;
 
         case GameState::Messages_Start ... GameState::Messages_End:
-
             showMap_Message();
             break;
 
         case GameState::StealthGame_Init:
-
             stealthGame_Init();
-            stealthGame();
-            break;
+            /*-fallthrough*/
 
         case GameState::StealthGame:
-
             stealthGame();
             break;
 
-        #ifdef TV_TRANSITION
+#ifdef TV_TRANSITION
 
             case GameState::TV_Init:
-
                 tv_Init();
-                tv();
-                break;
+                /*-fallthrough*/
 
             case GameState::TV:
-
                 tv();
                 break;
             
-        #endif
+#endif
 
-        #ifdef CREDITS
+#ifdef CREDITS
 
             case GameState::Credits_Init:
-
                 credits_Init();
-                credits();
-                break;
+                /*-fallthrough*/
 
             case GameState::Credits:
-
                 credits();
                 break;
             
-        #endif
+#endif
 
     }
 

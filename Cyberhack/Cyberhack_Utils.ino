@@ -119,49 +119,56 @@ uint8_t isSubArray(uint8_t fullArray[], uint8_t subArray[], uint8_t fullArrayLen
 void flickering(uint8_t y) {
 
     uint8_t frameCount = arduboy.getFrameCount(192);
+    uint8_t rectHeight = 0;
 
-    #ifdef FLICKERING
-        switch (frameCount) {
+#ifdef FLICKERING
 
-            case 0:
-            case 1:
-            case 5:
-            case 7:
-            case 16:
-            case 61:
-                arduboy.fillRect(0, y, WIDTH, 24, BLACK);
-                break;
+    switch (frameCount) {
 
-            case 64 ... 65:            
-                arduboy.fillRect(0, y, WIDTH, 3, BLACK);
-                break;
+        case 0:
+        case 1:
+        case 5:
+        case 7:
+        case 16:
+        case 61:
+            rectHeight = 24;
+            break;
 
-            case 66:
-            case 75:
-                arduboy.fillRect(0, y + 16, WIDTH, 5, BLACK);
-                break;
+        case 64 ... 65:
+            rectHeight = 3;
+            break;
 
-            case 69 ... 70:       
-                arduboy.fillRect(0, y + 5, WIDTH, 8, BLACK);
-                break;
+        case 66:
+        case 75:
+            rectHeight = 5;
+            y = y + 16;
+            break;
 
-            case 132:       
-            case 136:       
-                arduboy.drawFastHLine(0, y + 2, 40, BLACK);
-                arduboy.drawFastHLine(30, y + 17, 50, BLACK);
-                arduboy.drawFastHLine(60, y + 25, 50, BLACK);
-                break;
+        case 69 ... 70:
+            rectHeight = 8;
+            y = y + 5;
+            break;
 
-            case 134:       
-                arduboy.drawFastHLine(60, y + 7, 40, BLACK);
-                arduboy.drawFastHLine(30, y + 17, 50, BLACK);
-                arduboy.drawFastHLine(0, y + 25, 50, BLACK);
-                break;
+        case 132:
+        case 136:
+            arduboy.drawFastHLine(0, y + 2, 40, BLACK);
+            arduboy.drawFastHLine(30, y + 17, 50, BLACK);
+            arduboy.drawFastHLine(60, y + 25, 50, BLACK);
+            break;
 
-            default:
-                break;
-                
-        }
-    #endif
+        case 134:
+            arduboy.drawFastHLine(60, y + 7, 40, BLACK);
+            arduboy.drawFastHLine(30, y + 17, 50, BLACK);
+            arduboy.drawFastHLine(0, y + 25, 50, BLACK);
+            break;
+
+        default:
+            break;
+
+    }
+
+    arduboy.fillRect(0, y, WIDTH, rectHeight, BLACK);
+
+#endif
 
 }

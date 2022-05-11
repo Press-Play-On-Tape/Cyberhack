@@ -10,18 +10,16 @@ void renderPlayer() {
     switch (player.getMovement()) {
 
         case Movement::IdleLeft:
-            headImage = 0;
             frame = 0;
-            break;
+            /*-fallthrough*/
 
         case Movement::WalkingLeft:
             headImage = 0;
             break;
 
         case Movement::IdleRight:
-            headImage = 1;
-            frame = 4;
-            break;
+            frame = 0;
+            /*-fallthrough*/
 
         case Movement::WalkingRight:
             headImage = 1;
@@ -74,18 +72,16 @@ void renderGuard(Guard &guard) {
     switch (guard.getMovement()) {
 
         case Movement::IdleLeft:
-            headImage = 0;
             frame = 0;
-            break;
+            /*-fallthrough*/
 
         case Movement::WalkingLeft:
             headImage = 0;
             break;
 
         case Movement::IdleRight:
-            headImage = 1;
-            frame = 4;
-            break;
+            frame = 0;
+            /*-fallthrough*/
 
         case Movement::WalkingRight:
             headImage = 1;

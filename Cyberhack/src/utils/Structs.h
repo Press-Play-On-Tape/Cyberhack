@@ -28,13 +28,17 @@ struct Building {
 
         switch (this->door) {
 
-            case 1 ... 4:                                                                 return this->door - 1;
+            case 1 ... 4:
+                return this->door - 1;
 
-            case 5 ... Constants::Door_Open_Length:                                       return 3;
-            
-            case Constants::Door_Open_Length + 1 ... Constants::Door_Open_Length + 4:     return Constants::Door_Open_Length + 4 - this->door;
+            case 5 ... Constants::Door_Open_Length:
+                return 3;
 
-            default:                                                                      return 0;
+            case Constants::Door_Open_Length + 1 ... Constants::Door_Open_Length + 4:
+                return Constants::Door_Open_Length + 4 - this->door;
+
+            default:
+                return 0;
 
         }
 
