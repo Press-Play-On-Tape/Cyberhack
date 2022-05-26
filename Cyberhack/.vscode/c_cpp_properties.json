@@ -2,52 +2,6 @@
     "version": 4,
     "configurations": [
         {
-            "name": "Mac",
-            "compilerPath": "/usr/bin/clang",
-            "compilerArgs": [],
-            "intelliSenseMode": "clang-x64",
-            "includePath": [
-                "/Users/simonholmes/Documents/Arduino/libraries/**",
-                "/Applications/Programming/Arduino.app/Contents/Java/libraries/**",
-                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.2.7/**",
-                "/Applications/Programming/Arduino.app/Contents/Java/tools/**",
-                "/Applications/Programming/Arduino.app/Contents/Java/hardware/arduino/avr/**",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
-                "C:\\Program Files (x86)\\Arduino\\tools\\**",
-                "C:\\Users\\simon.holmes\\AppData\\Local\\Arduino15\\packages\\arduboy-homemade\\hardware\\avr\\1.2.9\\**",
-                "C:\\Program Files (x86)\\Arduino\\portable\\libraries\\**",
-                "C:\\Users\\simon.holmes\\Documents\\Arduino\\libraries\\**",
-                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.2.9/**"
-            ],
-            "forcedInclude": [],
-            "cStandard": "c11",
-            "cppStandard": "c++17",
-            "defines": [
-                "USBCON"
-            ]
-        },
-        {
-            "name": "Win32",
-            "compilerPath": "",
-            "compilerArgs": [],
-            "intelliSenseMode": "",
-            "includePath": [
-                "C:\\Program Files (x86)\\Arduino\\portable\\tools\\**",
-                "C:\\Users\\simon.holmes\\Documents\\Arduino\\libraries\\**",
-                "C:\\Program Files (x86)\\Arduino\\portable\\libraries\\**",
-                "C:\\Program Files (x86)\\Arduino\\portable\\hardware\\tools\\**",
-                "C:\\Program Files (x86)\\Arduino\\portable\\hardware\\arduino\\avr\\**"
-            ],
-            "forcedInclude": [
-                "C:\\Program Files (x86)\\Arduino\\portable\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
-            ],
-            "cStandard": "",
-            "cppStandard": "",
-            "defines": [
-                "USBCON"
-            ]
-        },
-        {
             "name": "Arduino",
             "compilerPath": "/Applications/Programming/Arduino.app/Contents/Java/hardware/tools/avr/bin/avr-g++",
             "compilerArgs": [
@@ -63,34 +17,31 @@
             ],
             "intelliSenseMode": "gcc-x64",
             "includePath": [
-                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.3.2/cores/arduboy",
-                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.3.2/variants/arduboy-promicro-alt",
-                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.3.2/libraries/Arduboy2/src",
-                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.3.2/libraries/EEPROM/src",
+                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.3.3/cores/arduboy",
+                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.3.3/variants/arduboy",
+                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.3.3/libraries/Arduboy2/src",
+                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.3.3/libraries/EEPROM/src",
                 "/Users/simonholmes/Documents/Arduino/libraries/ArduboyTones/src",
                 "/Applications/Programming/Arduino.app/Contents/Java/hardware/tools/avr/lib/gcc/avr/7.3.0/include",
                 "/Applications/Programming/Arduino.app/Contents/Java/hardware/tools/avr/lib/gcc/avr/7.3.0/include-fixed",
                 "/Applications/Programming/Arduino.app/Contents/Java/hardware/tools/avr/avr/include"
             ],
             "forcedInclude": [
-                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.3.2/cores/arduboy/Arduino.h"
+                "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.3.3/cores/arduboy/Arduino.h"
             ],
             "cStandard": "c11",
             "cppStandard": "c++11",
             "defines": [
                 "F_CPU=16000000L",
                 "ARDUINO=10813",
-                "ARDUINO_AVR_PROMICRO",
-                "AB_ALTERNATE_WIRING",
+                "ARDUINO_AVR_ARDUBOY",
                 "ARDUINO_ARCH_AVR",
                 "ARDUBOY_10",
-                "OLED_SSD1309",
-                "SUPPORT_XY_BUTTONS",
-                "CART_CS_RX",
+                "CART_CS_SDA",
                 "USB_VID=0x2341",
                 "USB_PID=0x8036",
                 "USB_MANUFACTURER=\"Unknown\"",
-                "USB_PRODUCT=\"8bitCADE\"",
+                "USB_PRODUCT=\"Arduboy\"",
                 "__DBL_MIN_EXP__=(-125)",
                 "__HQ_FBIT__=15",
                 "__cpp_attributes=200809",

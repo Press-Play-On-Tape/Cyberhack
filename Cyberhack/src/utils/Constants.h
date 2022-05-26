@@ -1,10 +1,12 @@
 #pragma once
 
+
 // - Debug ------------------------------
 
 #define _DEBUG
 #define _PUZZLE_LOAD_TEST
 #define _SHOW_PUZZLE_NUMBER
+#define TV_TRANSITION
 
 
 // - Inclusions -------------------------
@@ -91,6 +93,14 @@ namespace Constants {
     constexpr uint8_t Buffer_Max_Length = 7;
     constexpr uint8_t Grid_Max_Size = 6;
     constexpr uint8_t Grid_Blank = 255;
+
+    constexpr uint16_t EEPROM_Start = EEPROM_STORAGE_SPACE_START + 657;
+    constexpr uint16_t EEPROM_Start_C1 = EEPROM_Start;
+    constexpr uint16_t EEPROM_Start_C2 = EEPROM_Start + 1;
+    constexpr uint16_t EEPROM_Game_Saved = EEPROM_Start + 2;
+    constexpr uint16_t EEPROM_Data = EEPROM_Start + 3;
+    constexpr uint16_t EEPROM_End = EEPROM_Data + 35;
+    constexpr uint16_t EEPROM_Checksum = EEPROM_End;
 
 }
 
