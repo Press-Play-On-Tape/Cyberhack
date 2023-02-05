@@ -353,7 +353,7 @@ void showMap() {
                     font3x5.setCursor(39 + 9, 20 + 3);
 
                     for (uint8_t i = 1; i < Constants::Max_Deck_Count; i++){
-                        renderCommercialMenuOption(!player.getDeck(i), Words::Deck_V1 + 1, player.getDeckPrice(i));
+                        renderCommercialMenuOption(!player.getDeck(i), Words::No_Deck + i, player.getDeckPrice(i));
                     }
                     
                     font3x5.setCursor(39 + 8, 20 + 25);

@@ -1,5 +1,5 @@
 {
-    "board": "arduboy-homemade:avr:8bitcadexlup",
+    "board": "arduboy-homemade:avr:8bitcadexl",
     "output": "../build",
     "sketch": "Cyberhack/Cyberhack.ino",
     "port": "/dev/tty.usbmodem14601",
